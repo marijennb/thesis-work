@@ -1,0 +1,3 @@
+[submodule "esp-workspace/esp"]
+	path = esp-workspace/esp
+	url = git@github.com:marijennb/esp.git

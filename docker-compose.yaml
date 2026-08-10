@@ -1,0 +1,27 @@
+services:
+  esp:
+    # image: columbiasld/esp:centos7-full
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: esp-centos7-local
+    container_name: esp
+    tty: true
+    stdin_open: true
+    working_dir: /home/espuser/esp
+    network_mode: host
+
+    user: "${UID}:${GID}"
+
+    volumes:
+      - ./esp-workspace/esp:/home/espuser/esp
+      - ./esp-workspace/scripts:/home/espuser/scripts
+      - /home/mj/CAD:/home/mj/CAD:Z
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ${XAUTHORITY}:${XAUTHORITY}
+
+    environment:
+      # TODO: Clean up docker-compose, and env_setup script. Also look into making a Dockerfile.
+      DISPLAY: ${DISPLAY}
+      XDG_RUNTIME_DIR: ${XDG_RUNTIME_DIR}
+      XAUTHORITY: ${XAUTHORITY}
