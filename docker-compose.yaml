@@ -16,7 +16,9 @@ services:
     volumes:
       - ./esp-workspace/esp:/home/espuser/esp
       - ./esp-workspace/scripts:/home/espuser/scripts
-      - /home/mj/CAD:/home/mj/CAD:Z
+      # Uncomment for your CAD tools path!
+      # Ex:
+      # - /home/mj/CAD:/home/mj/CAD:Z
       - /tmp/.X11-unix:/tmp/.X11-unix
       - ${XAUTHORITY}:${XAUTHORITY}
 
